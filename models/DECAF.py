@@ -177,7 +177,7 @@ class DECAF(pl.LightningModule):
 
         self.x_dim = input_dim
         self.z_dim = self.x_dim
-
+        
         log.info(
             f"Setting up network with x_dim = {self.x_dim}, z_dim = {self.z_dim}, h_dim = {h_dim}"
         )
@@ -304,6 +304,7 @@ class DECAF(pl.LightningModule):
     def gen_synthetic(
         self, x: torch.Tensor, gen_order: Optional[list] = None, biased_edges: dict = {}
     ) -> torch.Tensor:
+        
         return self.generator.sequential(
             x,
             self.sample_z(x.shape[0]).type_as(x),
